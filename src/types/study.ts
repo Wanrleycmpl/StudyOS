@@ -16,3 +16,20 @@ export type Subject = {
   color: string;
   created_at: string;
 };
+
+export type StudySessionRecord = {
+  id: string;
+  subject_id: string;
+  date: string;
+  duration_minutes: number;
+  type: StudyType;
+};
+
+export type QuestionLogRecord = {
+  id: string;
+  subject_id: string;
+  date: string;
+  bank: string;
+  correct_count: number;
+  wrong_count: number;
+};
