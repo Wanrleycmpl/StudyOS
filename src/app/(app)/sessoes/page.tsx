@@ -27,20 +27,20 @@ export default async function SessionsPage() {
   return (
     <div className="mx-auto w-full max-w-6xl px-4 py-8 sm:px-6 lg:px-8 lg:py-10">
       <div className="mb-8">
-        <p className="mb-1 text-sm font-medium text-blue-600">Foco e consistência</p>
-        <h1 className="text-3xl font-semibold tracking-tight text-slate-950">Sessões de estudo</h1>
-        <p className="mt-2 text-sm text-slate-500">Cronometre o estudo e salve seu tempo líquido ao finalizar.</p>
+        <p className="mb-1 text-sm font-medium text-blue-400">Foco e consistência</p>
+        <h1 className="text-3xl font-semibold tracking-tight text-slate-100">Sessões de estudo</h1>
+        <p className="mt-2 text-sm text-slate-400">Cronometre o estudo e salve seu tempo líquido ao finalizar.</p>
       </div>
 
       {subjectsError ? (
-        <div className="rounded-lg bg-red-50 p-4 text-sm text-red-700">Não foi possível carregar as matérias. Confirme a migration do Supabase.</div>
+        <div className="rounded-lg bg-red-500/10 p-4 text-sm text-red-300">Não foi possível carregar as matérias. Confirme a migration do Supabase.</div>
       ) : subjects.length === 0 ? (
         <Card>
           <CardContent className="grid min-h-64 place-items-center p-6 text-center">
             <div>
-              <span className="mx-auto mb-3 grid size-10 place-items-center rounded-lg bg-blue-50 text-blue-600"><Clock3 className="size-5" /></span>
-              <p className="font-medium text-slate-800">Cadastre uma matéria primeiro</p>
-              <p className="mt-1 text-sm text-slate-500">A matéria é necessária para classificar cada sessão.</p>
+              <span className="mx-auto mb-3 grid size-10 place-items-center rounded-lg bg-blue-500/15 text-blue-300"><Clock3 className="size-5" /></span>
+              <p className="font-medium text-slate-200">Cadastre uma matéria primeiro</p>
+              <p className="mt-1 text-sm text-slate-400">A matéria é necessária para classificar cada sessão.</p>
               <Button className="mt-4" render={<Link href="/materias" />}>Ir para matérias</Button>
             </div>
           </CardContent>
@@ -54,14 +54,14 @@ export default async function SessionsPage() {
               <CardDescription>Os 10 registros mais recentes.</CardDescription>
             </CardHeader>
             <CardContent>
-              {sessionsError ? <p className="text-sm text-red-700">Não foi possível carregar as sessões.</p> : sessions.length === 0 ? <p className="py-6 text-center text-sm text-slate-500">Sua primeira sessão aparecerá aqui.</p> : (
+              {sessionsError ? <p className="text-sm text-red-300">Não foi possível carregar as sessões.</p> : sessions.length === 0 ? <p className="py-6 text-center text-sm text-slate-400">Sua primeira sessão aparecerá aqui.</p> : (
                 <Table>
                   <TableHeader><TableRow><TableHead>Matéria</TableHead><TableHead>Tipo</TableHead><TableHead>Data</TableHead><TableHead className="text-right">Duração</TableHead></TableRow></TableHeader>
                   <TableBody>
                     {sessions.map((session) => {
                       const subject = subjectsById.get(session.subject_id);
                       return <TableRow key={session.id}>
-                        <TableCell><span className="flex items-center gap-2 font-medium text-slate-800"><span className="size-2.5 rounded-full" style={{ backgroundColor: subject?.color ?? "#94a3b8" }} />{subject?.name ?? "Matéria removida"}</span></TableCell>
+                        <TableCell><span className="flex items-center gap-2 font-medium text-slate-200"><span className="size-2.5 rounded-full" style={{ backgroundColor: subject?.color ?? "#94a3b8" }} />{subject?.name ?? "Matéria removida"}</span></TableCell>
                         <TableCell>{typeLabels[session.type]}</TableCell>
                         <TableCell>{formatDate(session.date)}</TableCell>
                         <TableCell className="text-right">{session.duration_minutes} min</TableCell>

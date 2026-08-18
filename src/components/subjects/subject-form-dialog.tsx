@@ -55,18 +55,18 @@ export function SubjectFormDialog({ subject }: SubjectFormDialogProps) {
         <form action={formAction} className="space-y-4" ref={formRef}>
           {subject && <input name="id" type="hidden" value={subject.id} />}
           <div className="space-y-2">
-            <label className="text-sm font-medium text-slate-700" htmlFor={nameInputId}>
+            <label className="text-sm font-medium text-slate-300" htmlFor={nameInputId}>
               Nome da matéria
             </label>
             <Input defaultValue={subject?.name} id={nameInputId} maxLength={80} name="name" placeholder="Ex.: Direito Constitucional" required />
           </div>
           <div className="space-y-2">
-            <label className="text-sm font-medium text-slate-700" htmlFor={colorInputId}>
+            <label className="text-sm font-medium text-slate-300" htmlFor={colorInputId}>
               Cor de identificação
             </label>
             <Input className="h-10 w-16 cursor-pointer p-1" defaultValue={subject?.color ?? "#2563eb"} id={colorInputId} name="color" type="color" />
           </div>
-          {state.error && <p aria-live="polite" className="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">{state.error}</p>}
+          {state.error && <p aria-live="polite" className="rounded-lg bg-red-500/10 px-3 py-2 text-sm text-red-300">{state.error}</p>}
           <DialogFooter>
             <Button disabled={isPending} type="submit">
               {isPending ? "Salvando..." : isEditing ? "Salvar alterações" : "Criar matéria"}

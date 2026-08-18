@@ -58,27 +58,27 @@ export function StudyTimer({ subjects }: { subjects: Subject[] }) {
           <input name="durationMinutes" type="hidden" value={durationMinutes} />
           <div className="grid gap-4 sm:grid-cols-2">
             <div className="space-y-2">
-              <label className="text-sm font-medium text-slate-700" htmlFor="session-subject">Matéria</label>
-              <select className="h-9 w-full rounded-lg border border-slate-200 bg-white px-3 text-sm outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100" id="session-subject" name="subjectId" required>
+              <label className="text-sm font-medium text-slate-300" htmlFor="session-subject">Matéria</label>
+              <select className="h-9 w-full rounded-lg border border-slate-700 bg-slate-900 px-3 text-sm text-slate-100 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20" id="session-subject" name="subjectId" required>
                 {subjects.map((subject) => <option key={subject.id} value={subject.id}>{subject.name}</option>)}
               </select>
             </div>
             <div className="space-y-2">
-              <label className="text-sm font-medium text-slate-700" htmlFor="session-type">Tipo de estudo</label>
-              <select className="h-9 w-full rounded-lg border border-slate-200 bg-white px-3 text-sm outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100" defaultValue="teoria" id="session-type" name="type">
+              <label className="text-sm font-medium text-slate-300" htmlFor="session-type">Tipo de estudo</label>
+              <select className="h-9 w-full rounded-lg border border-slate-700 bg-slate-900 px-3 text-sm text-slate-100 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20" defaultValue="teoria" id="session-type" name="type">
                 {(Object.keys(typeLabels) as StudyType[]).map((type) => <option key={type} value={type}>{typeLabels[type]}</option>)}
               </select>
             </div>
           </div>
 
-          <div className="my-8 rounded-xl bg-slate-950 px-5 py-8 text-center text-white">
+          <div className="my-8 rounded-xl border border-slate-800 bg-slate-950 px-5 py-8 text-center text-white">
             <p className="mb-2 text-sm text-slate-300">Tempo líquido</p>
             <output className="font-mono text-5xl font-semibold tracking-tight tabular-nums sm:text-6xl">{formatTimer(elapsedSeconds)}</output>
             <p className="mt-3 text-xs text-slate-400">Ao finalizar, será registrado como {durationMinutes} {durationMinutes === 1 ? "minuto" : "minutos"}.</p>
           </div>
 
-          {state.error && <p aria-live="polite" className="mb-4 rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">{state.error}</p>}
-          {state.success && <p aria-live="polite" className="mb-4 rounded-lg bg-emerald-50 px-3 py-2 text-sm text-emerald-700">Sessão registrada com sucesso.</p>}
+          {state.error && <p aria-live="polite" className="mb-4 rounded-lg bg-red-500/10 px-3 py-2 text-sm text-red-300">{state.error}</p>}
+          {state.success && <p aria-live="polite" className="mb-4 rounded-lg bg-emerald-500/10 px-3 py-2 text-sm text-emerald-300">Sessão registrada com sucesso.</p>}
 
           <div className="flex flex-wrap justify-center gap-2">
             <Button disabled={isPending} onClick={() => setIsRunning((value) => !value)} size="lg" type="button">

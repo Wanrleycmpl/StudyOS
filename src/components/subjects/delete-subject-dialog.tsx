@@ -29,7 +29,7 @@ export function DeleteSubjectDialog({ subject }: { subject: Subject }) {
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger render={<Button size="icon-sm" variant="ghost" />}>
-        <Trash2 className="text-red-600" />
+        <Trash2 className="text-red-400" />
         <span className="sr-only">Excluir {subject.name}</span>
       </DialogTrigger>
       <DialogContent>
@@ -41,7 +41,7 @@ export function DeleteSubjectDialog({ subject }: { subject: Subject }) {
         </DialogHeader>
         <form action={formAction}>
           <input name="id" type="hidden" value={subject.id} />
-          {state.error && <p aria-live="polite" className="mb-4 rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">{state.error}</p>}
+          {state.error && <p aria-live="polite" className="mb-4 rounded-lg bg-red-500/10 px-3 py-2 text-sm text-red-300">{state.error}</p>}
           <DialogFooter>
             <Button disabled={isPending} type="submit" variant="destructive">
               <Trash2 data-icon="inline-start" />

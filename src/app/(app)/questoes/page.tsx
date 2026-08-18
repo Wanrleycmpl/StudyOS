@@ -25,20 +25,20 @@ export default async function QuestionsPage() {
   return (
     <div className="mx-auto w-full max-w-6xl px-4 py-8 sm:px-6 lg:px-8 lg:py-10">
       <div className="mb-8">
-        <p className="mb-1 text-sm font-medium text-blue-600">Métricas de desempenho</p>
-        <h1 className="text-3xl font-semibold tracking-tight text-slate-950">Questões</h1>
-        <p className="mt-2 text-sm text-slate-500">Registre acertos e erros para acompanhar sua evolução.</p>
+        <p className="mb-1 text-sm font-medium text-blue-400">Métricas de desempenho</p>
+        <h1 className="text-3xl font-semibold tracking-tight text-slate-100">Questões</h1>
+        <p className="mt-2 text-sm text-slate-400">Registre acertos e erros para acompanhar sua evolução.</p>
       </div>
 
       {subjectsError ? (
-        <div className="rounded-lg bg-red-50 p-4 text-sm text-red-700">Não foi possível carregar as matérias. Confirme a migration do Supabase.</div>
+        <div className="rounded-lg bg-red-500/10 p-4 text-sm text-red-300">Não foi possível carregar as matérias. Confirme a migration do Supabase.</div>
       ) : subjects.length === 0 ? (
         <Card>
           <CardContent className="grid min-h-64 place-items-center p-6 text-center">
             <div>
-              <span className="mx-auto mb-3 grid size-10 place-items-center rounded-lg bg-blue-50 text-blue-600"><CircleHelp className="size-5" /></span>
-              <p className="font-medium text-slate-800">Cadastre uma matéria primeiro</p>
-              <p className="mt-1 text-sm text-slate-500">Assim você poderá relacionar cada bloco de questões ao conteúdo correto.</p>
+              <span className="mx-auto mb-3 grid size-10 place-items-center rounded-lg bg-blue-500/15 text-blue-300"><CircleHelp className="size-5" /></span>
+              <p className="font-medium text-slate-200">Cadastre uma matéria primeiro</p>
+              <p className="mt-1 text-sm text-slate-400">Assim você poderá relacionar cada bloco de questões ao conteúdo correto.</p>
               <Button className="mt-4" render={<Link href="/materias" />}>Ir para matérias</Button>
             </div>
           </CardContent>
@@ -49,18 +49,18 @@ export default async function QuestionsPage() {
           <Card>
             <CardHeader><CardTitle>Registros recentes</CardTitle><CardDescription>Os 10 últimos blocos de questões registrados.</CardDescription></CardHeader>
             <CardContent>
-              {logsError ? <p className="text-sm text-red-700">Não foi possível carregar os registros.</p> : logs.length === 0 ? <p className="py-6 text-center text-sm text-slate-500">Seu primeiro registro aparecerá aqui.</p> : (
+              {logsError ? <p className="text-sm text-red-300">Não foi possível carregar os registros.</p> : logs.length === 0 ? <p className="py-6 text-center text-sm text-slate-400">Seu primeiro registro aparecerá aqui.</p> : (
                 <Table>
                   <TableHeader><TableRow><TableHead>Matéria</TableHead><TableHead>Banca</TableHead><TableHead>Data</TableHead><TableHead className="text-right">Acertos</TableHead><TableHead className="text-right">Erros</TableHead></TableRow></TableHeader>
                   <TableBody>
                     {logs.map((log) => {
                       const subject = subjectsById.get(log.subject_id);
                       return <TableRow key={log.id}>
-                        <TableCell><span className="flex items-center gap-2 font-medium text-slate-800"><span className="size-2.5 rounded-full" style={{ backgroundColor: subject?.color ?? "#94a3b8" }} />{subject?.name ?? "Matéria removida"}</span></TableCell>
+                        <TableCell><span className="flex items-center gap-2 font-medium text-slate-200"><span className="size-2.5 rounded-full" style={{ backgroundColor: subject?.color ?? "#94a3b8" }} />{subject?.name ?? "Matéria removida"}</span></TableCell>
                         <TableCell>{log.bank}</TableCell>
                         <TableCell>{formatDate(log.date)}</TableCell>
-                        <TableCell className="text-right font-medium text-emerald-700">{log.correct_count}</TableCell>
-                        <TableCell className="text-right font-medium text-orange-700">{log.wrong_count}</TableCell>
+                        <TableCell className="text-right font-medium text-emerald-300">{log.correct_count}</TableCell>
+                        <TableCell className="text-right font-medium text-orange-300">{log.wrong_count}</TableCell>
                       </TableRow>;
                     })}
                   </TableBody>

@@ -62,19 +62,19 @@ export default async function DashboardPage() {
 
   const streak = calculateStreak((allSessions ?? []).map((session) => session.date), today);
   const metrics = [
-    { label: "Horas líquidas", value: `${(totalMinutes / 60).toFixed(1)}h`, description: "nos últimos 7 dias", icon: Clock3, color: "bg-blue-50 text-blue-600" },
-    { label: "Questões resolvidas", value: totalQuestions.toLocaleString("pt-BR"), description: "total acumulado", icon: BookOpen, color: "bg-violet-50 text-violet-600" },
-    { label: "Taxa de acertos", value: `${accuracy}%`, description: "aproveitamento geral", icon: CheckCircle2, color: "bg-emerald-50 text-emerald-600" },
-    { label: "Sequência atual", value: `${streak} ${streak === 1 ? "dia" : "dias"}`, description: "estudando sem parar", icon: Flame, color: "bg-orange-50 text-orange-600" },
+    { label: "Horas líquidas", value: `${(totalMinutes / 60).toFixed(1)}h`, description: "nos últimos 7 dias", icon: Clock3, color: "bg-blue-500/15 text-blue-300" },
+    { label: "Questões resolvidas", value: totalQuestions.toLocaleString("pt-BR"), description: "total acumulado", icon: BookOpen, color: "bg-violet-500/15 text-violet-300" },
+    { label: "Taxa de acertos", value: `${accuracy}%`, description: "aproveitamento geral", icon: CheckCircle2, color: "bg-emerald-500/15 text-emerald-300" },
+    { label: "Sequência atual", value: `${streak} ${streak === 1 ? "dia" : "dias"}`, description: "estudando sem parar", icon: Flame, color: "bg-orange-500/15 text-orange-300" },
   ];
 
   return (
     <div className="mx-auto w-full max-w-7xl px-4 py-8 sm:px-6 lg:px-8 lg:py-10">
       <div className="mb-8 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
         <div>
-          <p className="mb-1 text-sm font-medium text-blue-600">Seu painel de estudos</p>
-          <h1 className="text-3xl font-semibold tracking-tight text-slate-950">Acompanhe seu progresso</h1>
-          <p className="mt-2 text-sm text-slate-500">Transforme consistência em aprovação, uma sessão por vez.</p>
+          <p className="mb-1 text-sm font-medium text-blue-400">Seu painel de estudos</p>
+          <h1 className="text-3xl font-semibold tracking-tight text-slate-100">Acompanhe seu progresso</h1>
+          <p className="mt-2 text-sm text-slate-400">Transforme consistência em aprovação, uma sessão por vez.</p>
         </div>
         <Button render={<Link href="/sessoes" />} size="lg">
           <Play data-icon="inline-start" />
@@ -87,9 +87,9 @@ export default async function DashboardPage() {
           <Card key={label} size="sm">
             <CardContent className="flex items-start justify-between pt-1">
               <div>
-                <p className="text-sm text-slate-500">{label}</p>
-                <p className="mt-1 text-2xl font-semibold tracking-tight text-slate-950">{value}</p>
-                <p className="mt-1 text-xs text-slate-400">{description}</p>
+                <p className="text-sm text-slate-400">{label}</p>
+                <p className="mt-1 text-2xl font-semibold tracking-tight text-slate-100">{value}</p>
+                <p className="mt-1 text-xs text-slate-500">{description}</p>
               </div>
               <span className={`grid size-9 place-items-center rounded-lg ${color}`}>
                 <Icon className="size-4" />

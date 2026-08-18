@@ -47,9 +47,9 @@ export function DashboardCharts({ dailyStudy, correctAnswers, wrongAnswers }: Da
                   <stop offset="95%" stopColor="#2563eb" stopOpacity={0} />
                 </linearGradient>
               </defs>
-              <XAxis axisLine={false} dataKey="day" tick={{ fill: "#64748b", fontSize: 12 }} tickLine={false} />
-              <YAxis axisLine={false} tick={{ fill: "#64748b", fontSize: 12 }} tickFormatter={(value: number) => `${value}h`} tickLine={false} />
-              <Tooltip contentStyle={{ borderColor: "#e2e8f0", borderRadius: 8 }} formatter={(value) => [`${Number(value).toFixed(1)} h`, "Estudo"]} />
+              <XAxis axisLine={false} dataKey="day" tick={{ fill: "#94a3b8", fontSize: 12 }} tickLine={false} />
+              <YAxis axisLine={false} tick={{ fill: "#94a3b8", fontSize: 12 }} tickFormatter={(value: number) => `${value}h`} tickLine={false} />
+              <Tooltip contentStyle={{ backgroundColor: "#1e293b", borderColor: "#334155", borderRadius: 8, color: "#e2e8f0" }} formatter={(value) => [`${Number(value).toFixed(1)} h`, "Estudo"]} />
               <Area dataKey="hours" fill="url(#studyHours)" stroke="#2563eb" strokeWidth={2.5} type="monotone" />
             </AreaChart>
           </ResponsiveContainer>
@@ -68,16 +68,16 @@ export function DashboardCharts({ dailyStudy, correctAnswers, wrongAnswers }: Da
                 <Pie cx="50%" cy="45%" data={answerData} dataKey="value" innerRadius={58} outerRadius={85} paddingAngle={3}>
                   {answerData.map((entry, index) => <Cell fill={answerColors[index]} key={entry.name} />)}
                 </Pie>
-                <Tooltip formatter={(value) => [value, "Questões"]} />
+                <Tooltip contentStyle={{ backgroundColor: "#1e293b", borderColor: "#334155", borderRadius: 8, color: "#e2e8f0" }} formatter={(value) => [value, "Questões"]} />
               </PieChart>
             </ResponsiveContainer>
           ) : (
-            <div className="grid h-full place-items-center text-center text-sm text-slate-500">Registre questões para acompanhar seus acertos.</div>
+            <div className="grid h-full place-items-center text-center text-sm text-slate-400">Registre questões para acompanhar seus acertos.</div>
           )}
           {hasAnswers && (
             <div className="-mt-8 flex justify-center gap-5 text-xs">
               {answerData.map((item, index) => (
-                <span className="flex items-center gap-1.5 text-slate-600" key={item.name}>
+                <span className="flex items-center gap-1.5 text-slate-300" key={item.name}>
                   <span className="size-2.5 rounded-full" style={{ backgroundColor: answerColors[index] }} />
                   {item.name}: {item.value}
                 </span>

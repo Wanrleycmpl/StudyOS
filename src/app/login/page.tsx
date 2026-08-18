@@ -12,8 +12,8 @@ export default async function LoginPage() {
   if (user) redirect("/dashboard");
 
   return (
-    <main className="grid min-h-screen place-items-center bg-slate-50 p-4">
-      <Card className="w-full max-w-md bg-white shadow-sm">
+    <main className="grid min-h-screen place-items-center bg-slate-950 p-4">
+      <Card className="w-full max-w-md border-slate-800 bg-slate-900 shadow-2xl shadow-black/20">
         <CardHeader className="items-center text-center">
           <span className="mb-2 grid size-11 place-items-center rounded-xl bg-blue-600 text-white">
             <GraduationCap className="size-6" />

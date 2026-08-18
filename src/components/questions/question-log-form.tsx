@@ -34,26 +34,26 @@ export function QuestionLogForm({ subjects }: { subjects: Subject[] }) {
         <form action={formAction} className="grid gap-4 sm:grid-cols-2" ref={formRef}>
           <input name="date" type="hidden" value={currentLocalDate()} />
           <div className="space-y-2">
-            <label className="text-sm font-medium text-slate-700" htmlFor="question-subject">Matéria</label>
-            <select className="h-9 w-full rounded-lg border border-slate-200 bg-white px-3 text-sm outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100" id="question-subject" name="subjectId" required>
+            <label className="text-sm font-medium text-slate-300" htmlFor="question-subject">Matéria</label>
+            <select className="h-9 w-full rounded-lg border border-slate-700 bg-slate-900 px-3 text-sm text-slate-100 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20" id="question-subject" name="subjectId" required>
               {subjects.map((subject) => <option key={subject.id} value={subject.id}>{subject.name}</option>)}
             </select>
           </div>
           <div className="space-y-2">
-            <label className="text-sm font-medium text-slate-700" htmlFor="bank">Banca</label>
+            <label className="text-sm font-medium text-slate-300" htmlFor="bank">Banca</label>
             <Input id="bank" maxLength={80} name="bank" placeholder="Ex.: Cebraspe" required />
           </div>
           <div className="space-y-2">
-            <label className="text-sm font-medium text-slate-700" htmlFor="correct-count">Acertos</label>
+            <label className="text-sm font-medium text-slate-300" htmlFor="correct-count">Acertos</label>
             <Input defaultValue={0} id="correct-count" min={0} name="correctCount" required type="number" />
           </div>
           <div className="space-y-2">
-            <label className="text-sm font-medium text-slate-700" htmlFor="wrong-count">Erros</label>
+            <label className="text-sm font-medium text-slate-300" htmlFor="wrong-count">Erros</label>
             <Input defaultValue={0} id="wrong-count" min={0} name="wrongCount" required type="number" />
           </div>
           <div className="sm:col-span-2">
-            {state.error && <p aria-live="polite" className="mb-4 rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">{state.error}</p>}
-            {state.success && <p aria-live="polite" className="mb-4 rounded-lg bg-emerald-50 px-3 py-2 text-sm text-emerald-700">Questões registradas com sucesso.</p>}
+            {state.error && <p aria-live="polite" className="mb-4 rounded-lg bg-red-500/10 px-3 py-2 text-sm text-red-300">{state.error}</p>}
+            {state.success && <p aria-live="polite" className="mb-4 rounded-lg bg-emerald-500/10 px-3 py-2 text-sm text-emerald-300">Questões registradas com sucesso.</p>}
             <Button disabled={isPending} type="submit">
               <Save data-icon="inline-start" />
               {isPending ? "Registrando..." : "Registrar questões"}
